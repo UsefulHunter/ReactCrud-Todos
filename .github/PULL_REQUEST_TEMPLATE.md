@@ -17,7 +17,3 @@
 
 - Answer (Template)
 
-**Devices tested**
-
-- [ ] Android
-- [ ] Ios

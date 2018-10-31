@@ -1,6 +1,6 @@
 import React from 'react';
-import TodoItem from './TodoItem';
 import PropTypes from 'prop-types';
+import TodoItem from './TodoItem';
 
 const Todos = ({ todos }) => (
   <div className="Todos">
@@ -9,8 +9,14 @@ const Todos = ({ todos }) => (
   </div>
 );
 
+Todos.defaultProps = {
+  todos: [],
+};
+
 Todos.propTypes = {
-  todos: PropTypes.array,
+  todos: {
+    title: PropTypes.string,
+  },
 };
 
 export default Todos;

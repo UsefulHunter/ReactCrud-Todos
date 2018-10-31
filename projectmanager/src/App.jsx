@@ -12,6 +12,18 @@ class App extends Component {
       projects: [],
       todos: [],
     };
+
+    this.handleAddProject = this.handleAddProject.bind(this);
+    this.handleDeleteProject = this.handleDeleteProject.bind(this);
+  }
+
+  componentWillMount() {
+    this.getProjects();
+    this.getTodos();
+  }
+
+  componentDidMount() {
+    this.getTodos();
   }
 
   getTodos() {
@@ -19,18 +31,13 @@ class App extends Component {
       url: 'https://jsonplaceholder.typicode.com/todos',
       dataType: 'json',
       cache: false,
-      success: function(data) {
-        this.setState(
-          {
-            todos: data,
-          },
-          function() {
-            console.log(this.state);
-          }
-        );
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.log(err);
+      success: data => {
+        this.setState({
+          todos: data,
+        });
+      },
+      error: (xhr, status, err) => {
+        Error(err);
       },
     });
   }
@@ -57,35 +64,27 @@ class App extends Component {
     });
   }
 
-  componentWillMount() {
-    this.getProjects();
-    this.getTodos();
-  }
-  componentDidMount() {
-    this.getTodos();
-  }
-
   handleAddProject(project) {
-    console.log(project);
-    let projects = this.state.projects;
+    const { projects } = this.state;
     projects.push(project);
-    this.setState({ projects: projects });
+    this.setState({ projects });
   }
 
   handleDeleteProject(id) {
-    let projects = this.state.projects;
-    let index = projects.findIndex(x => x.id === id);
+    const { projects } = this.state;
+    const index = projects.findIndex(x => x.id === id);
     projects.splice(index, 1);
-    this.setState({ projects: projects });
+    this.setState({ projects });
   }
 
   render() {
+    const { todos, projects } = this.state;
     return (
       <div className="App">
-        <AddProject addProject={this.handleAddProject.bind(this)} />
-        <Projects projects={this.state.projects} onDelete={this.handleDeleteProject.bind(this)} />
+        <AddProject addProject={this.handleAddProject} />
+        <Projects projects={projects} onDelete={this.handleDeleteProject} />
         <hr />
-        <Todos todos={this.state.todos} />
+        <Todos todos={todos} />
       </div>
     );
   }

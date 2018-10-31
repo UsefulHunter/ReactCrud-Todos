@@ -7,8 +7,12 @@ const TodoItem = ({ title }) => (
   </li>
 );
 
+TodoItem.defaultProps = {
+  title: '',
+};
+
 TodoItem.propTypes = {
-  todo: PropTypes.object,
+  title: PropTypes.string,
 };
 
 export default TodoItem;

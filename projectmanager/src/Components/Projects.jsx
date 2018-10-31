@@ -1,6 +1,6 @@
 import React from 'react';
-import ProjectItem from './ProjectItem';
 import PropTypes from 'prop-types';
+import ProjectItem from './ProjectItem';
 
 const Projects = ({ onDelete, projects }) => (
   <div className="Projects">
@@ -11,8 +11,16 @@ const Projects = ({ onDelete, projects }) => (
       ))}
   </div>
 );
+
+Projects.defaultProps = {
+  projects: [],
+  onDelete: () => {},
+};
+
 Projects.propTypes = {
-  projects: PropTypes.array,
+  projects: {
+    title: PropTypes.string,
+  },
   onDelete: PropTypes.func,
 };
 

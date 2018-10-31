@@ -1,6 +1,11 @@
 {
   "extends": "airbnb",
   "env": {
-    "jest": true
+    "jest": true,
+    "browser": true
+  },
+  "rules": {
+    "arrow-parens": "off",
+    "operator-linebreak": "off"
   }
 }

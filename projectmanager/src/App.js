@@ -1,28 +1,28 @@
-import React, { Component } from "react";
-import uuid from "uuid";
-import $ from "jquery";
-import Projects from "./Components/Projects";
-import AddProject from "./Components/AddProject";
-import Todos from "./Components/Todos";
+import React, { Component } from 'react';
+import uuid from 'uuid';
+import $ from 'jquery';
+import Projects from './Components/Projects';
+import AddProject from './Components/AddProject';
+import Todos from './Components/Todos';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       projects: [],
-      todos: []
+      todos: [],
     };
   }
 
   getTodos() {
     $.ajax({
-      url: "https://jsonplaceholder.typicode.com/todos",
-      dataType: "json",
+      url: 'https://jsonplaceholder.typicode.com/todos',
+      dataType: 'json',
       cache: false,
       success: function(data) {
         this.setState(
           {
-            todos: data
+            todos: data,
           },
           function() {
             console.log(this.state);
@@ -31,7 +31,7 @@ class App extends Component {
       }.bind(this),
       error: function(xhr, status, err) {
         console.log(err);
-      }
+      },
     });
   }
 
@@ -40,20 +40,20 @@ class App extends Component {
       projects: [
         {
           id: uuid.v4(),
-          title: "Business Website",
-          category: "Web Design"
+          title: 'Business Website',
+          category: 'Web Design',
         },
         {
           id: uuid.v4(),
-          title: "Social App",
-          category: "Mobile Development"
+          title: 'Social App',
+          category: 'Mobile Development',
         },
         {
           id: uuid.v4(),
-          title: "Ecommerce Shopping Cart",
-          category: "Web Development"
-        }
-      ]
+          title: 'Ecommerce Shopping Cart',
+          category: 'Web Development',
+        },
+      ],
     });
   }
 
@@ -83,10 +83,7 @@ class App extends Component {
     return (
       <div className="App">
         <AddProject addProject={this.handleAddProject.bind(this)} />
-        <Projects
-          projects={this.state.projects}
-          onDelete={this.handleDeleteProject.bind(this)}
-        />
+        <Projects projects={this.state.projects} onDelete={this.handleDeleteProject.bind(this)} />
         <hr />
         <Todos todos={this.state.todos} />
       </div>

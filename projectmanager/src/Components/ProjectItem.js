@@ -1,5 +1,5 @@
-import * as React from "react";
-import PropTypes from "prop-types";
+import * as React from 'react';
+import PropTypes from 'prop-types';
 
 const ProjectItem = ({ project, onDelete }) => (
   <li className="Projects">
@@ -10,7 +10,7 @@ const ProjectItem = ({ project, onDelete }) => (
 
 ProjectItem.propTypes = {
   project: PropTypes.object,
-  onDelete: PropTypes.func
+  onDelete: PropTypes.func,
 };
 
 export default ProjectItem;

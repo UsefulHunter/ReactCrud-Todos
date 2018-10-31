@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const TodoItem = ({ title }) => (
   <li className="Todo">
@@ -8,7 +8,7 @@ const TodoItem = ({ title }) => (
 );
 
 TodoItem.propTypes = {
-  todo: PropTypes.object
+  todo: PropTypes.object,
 };
 
 export default TodoItem;

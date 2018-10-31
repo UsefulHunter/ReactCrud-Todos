@@ -5,9 +5,9 @@
   "dependencies": {
     "jquery": "^3.3.1",
     "prop-types": "^15.6.1",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-scripts": "1.1.4",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-scripts": "^2.0.5",
     "uuid": "^3.2.1"
   },
   "scripts": {
@@ -30,13 +30,17 @@
   "lint-staged": {
     "*.js": [
       "prettier --config .prettierrc --write ",
-      "eslint ",
       "git add"
     ],
     "*.jsx": [
       "prettier --config .prettierrc --write ",
-      "eslint ",
       "git add"
     ]
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

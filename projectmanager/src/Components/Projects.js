@@ -1,34 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ProjectItem from './ProjectItem';
 import PropTypes from 'prop-types';
 
-class Projects extends Component {
-    deleteProject(id){
-        this.props.onDelete(id);
-    }
-    
-    render() {
-        let projectItems;
-        if(this.props.projects){
-            projectItems = this.props.projects.map(project => {
-                //console.log(project);
-                return(
-                    <ProjectItem onDelete={this.deleteProject.bind(this)} key ={project.title} project={project} />
-                );
-            });
-        }
-        return (
-            <div className="Projects">
-                <h3>Latest Projects</h3>
-                {projectItems}
-            </div>
-        );
-    }
-}
-
+const Projects = ({ onDelete, projects }) => (
+  <div className="Projects">
+    <h3>Latest Projects</h3>
+    {projects &&
+      projects.map(project => (
+        <ProjectItem onDelete={onDelete} key={project.title} project={project} />
+      ))}
+  </div>
+);
 Projects.propTypes = {
-    projects: PropTypes.array, 
-    onDelete: PropTypes.func
-}
+  projects: PropTypes.array,
+  onDelete: PropTypes.func,
+};
 
 export default Projects;
